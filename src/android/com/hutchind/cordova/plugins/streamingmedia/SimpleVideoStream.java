@@ -47,13 +47,13 @@ public class SimpleVideoStream extends Activity implements
 		mControls = b.getBoolean("controls", true);
 
 		DisplayMetrics displaymetrics = new DisplayMetrics();
-        cordova.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 
 	
 		mVideoView = new VideoView(this);
 		
 		
-		RelativeLayout relLayout = new RelativeLayout(cordova.getActivity());
+		RelativeLayout relLayout = new RelativeLayout(this);
 		relLayout.addView(mVideoView, new ViewGroup.LayoutParams(displaymetrics.widthPixels, displaymetrics.heightPixels));
 
 		
@@ -71,7 +71,7 @@ public class SimpleVideoStream extends Activity implements
 		relLayout.addView(mProgressBar);
 		mProgressBar.bringToFront();
 
-		cordova.getActivity().addContentView(relLayout, new ViewGroup.LayoutParams(displaymetrics.widthPixels, displaymetrics.heightPixels));
+		this.addContentView(relLayout, new ViewGroup.LayoutParams(displaymetrics.widthPixels, displaymetrics.heightPixels));
 
 		webView.getView().setBackgroundColor(0x00000000);
 		((ViewGroup)webView.getView()).bringToFront();
