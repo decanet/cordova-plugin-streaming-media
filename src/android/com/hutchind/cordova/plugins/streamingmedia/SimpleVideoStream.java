@@ -2,6 +2,7 @@ package com.hutchind.cordova.plugins.streamingmedia;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.util.DisplayMetrics;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.media.MediaPlayer;
@@ -45,13 +46,19 @@ public class SimpleVideoStream extends Activity implements
 		mShouldAutoClose = mShouldAutoClose == null ? true : mShouldAutoClose;
 		mControls = b.getBoolean("controls", true);
 
-		RelativeLayout relLayout = new RelativeLayout(this);
-		relLayout.setBackgroundColor(Color.BLACK);
-		RelativeLayout.LayoutParams relLayoutParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-		relLayoutParam.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+        cordova.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+	
 		mVideoView = new VideoView(this);
-		mVideoView.setLayoutParams(relLayoutParam);
-		relLayout.addView(mVideoView);
+		
+		
+		RelativeLayout relLayout = new RelativeLayout(cordova.getActivity());
+		relLayout.addView(mVideoView, new ViewGroup.LayoutParams(displaymetrics.widthPixels, displaymetrics.heightPixels));
+
+		
+		
+		
 
 		// Create progress throbber
 		mProgressBar = new ProgressBar(this);
@@ -64,10 +71,11 @@ public class SimpleVideoStream extends Activity implements
 		relLayout.addView(mProgressBar);
 		mProgressBar.bringToFront();
 
-		setOrientation(b.getString("orientation"));
+		cordova.getActivity().addContentView(relLayout, new ViewGroup.LayoutParams(displaymetrics.widthPixels, displaymetrics.heightPixels));
 
-		setContentView(relLayout, relLayoutParam);
-
+		webView.getView().setBackgroundColor(0x00000000);
+		((ViewGroup)webView.getView()).bringToFront();
+		
 		play();
 	}
 

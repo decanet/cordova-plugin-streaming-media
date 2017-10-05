@@ -8,20 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nchutchind/Streaming-Media-Cordova-Plugin.git"
+    "url": "git+https://github.com/decanet/cordova-plugin-streaming-media.git"
   },
   "keywords": [
     "media",
     "streaming",
     "ecosystem:cordova",
-    "cordova-ios",
-    "cordova-android",
-    "cordova-fireos"
+    "cordova-android"
   ],
-  "author": "Nicholas Hutchind",
+  "author": "Decanet, Nicholas Hutchind",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nchutchind/Streaming-Media-Cordova-Plugin/issues"
+    "url": "https://github.com/decanet/cordova-plugin-streaming-media/issues"
   },
-  "homepage": "https://github.com/nchutchind/Streaming-Media-Cordova-Plugin#readme"
+  "homepage": "https://github.com/decanet/cordova-plugin-streaming-media#readme"
 }
